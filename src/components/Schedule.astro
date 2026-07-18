@@ -12,14 +12,14 @@ const events = [
     title: "GenCon",
     location: "Indianapolis, IN",
     link: "https://www.gencon.com",
-    btnText: "Buy Tickets"
+    btnText: "Event Info"
   },
   {
     dateRange: "August 5 - 9, 2026",
     title: "Star Trek Las Vegas",
     location: "Las Vegas, NV",
     link: "https://www.creationent.com/events/stlv-26/",
-    btnText: "Event Details"
+    btnText: "Event Info"
   }
 ];
 ---
@@ -74,13 +74,11 @@ const events = [
       <!-- Right Side: Image -->
       <div class="lg:col-span-5 flex justify-center schedule-img opacity-0">
         <div class="relative group w-full max-w-sm lg:max-w-full">
-          <!-- Offset border -->
-          <div class="absolute -inset-3 border-2 border-[#5170ff]/40 rounded-lg translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></div>
           <!-- Main Image -->
           <img 
             src="/bg-appearances.webp" 
             alt="Bonnie Gordon Live Appearance" 
-            class="relative z-10 w-full h-auto object-cover rounded-lg shadow-2xl border-4 border-[#5170ff] transition-transform duration-300"
+            class="relative z-10 w-full h-auto object-cover rounded-lg shadow-2xl border-4 border-[#5170ff] group-hover:scale-105 transition-transform duration-300"
           />
         </div>
       </div>

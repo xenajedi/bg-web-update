@@ -14,18 +14,16 @@
     </div>
 
     <!-- Album Layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
       
       <!-- Left Side: Album Art -->
       <div class="lg:col-span-5 flex justify-center conartist-img opacity-0">
         <div class="relative group w-full max-w-sm lg:max-w-full">
-          <!-- Offset frame -->
-          <div class="absolute -inset-3 border-2 border-[#0995ce]/40 rounded-lg translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></div>
           <!-- Main Image -->
           <img 
             src="/bg-conartist.webp" 
             alt="Con Artist Album Cover" 
-            class="relative z-10 w-full h-auto object-cover rounded-lg shadow-2xl border-4 border-[#0995ce]"
+            class="relative z-10 w-full h-auto object-cover rounded-lg shadow-2xl border-4 border-[#0995ce] group-hover:scale-105 transition-transform duration-300"
           />
         </div>
       </div>
@@ -91,22 +89,22 @@
           </div>
         </div>
 
-        <!-- Video Embed -->
-        <div class="mt-8 pt-4">
-          <div class="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl border border-[#0995ce]/30">
-            <iframe 
-              src="https://www.youtube.com/embed/4FMKatC65JQ" 
-              title="Con Artist Featured Music Video" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen
-              class="absolute inset-0 w-full h-full border-0"
-            ></iframe>
-          </div>
-          <span class="text-xs uppercase tracking-wider text-[#0995ce]/70 mt-2 block text-center">Featured Music Video / Single</span>
-        </div>
-
       </div>
 
+    </div>
+
+    <!-- Centered Video Embed below -->
+    <div class="mt-16 max-w-3xl mx-auto conartist-video opacity-0">
+      <div class="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl border border-[#0995ce]/30">
+        <iframe 
+          src="https://www.youtube.com/embed/4FMKatC65JQ" 
+          title="Con Artist Featured Music Video" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen
+          class="absolute inset-0 w-full h-full border-0"
+        ></iframe>
+      </div>
+      <span class="text-xs uppercase tracking-wider text-[#0995ce]/70 mt-2 block text-center">Featured Music Video / Single</span>
     </div>
 
   </div>
@@ -143,6 +141,18 @@
     gsap.to('.conartist-details', {
       scrollTrigger: {
         trigger: '.conartist-details',
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+
+    gsap.to('.conartist-video', {
+      scrollTrigger: {
+        trigger: '.conartist-video',
         start: 'top 85%',
         toggleActions: 'play none none none'
       },

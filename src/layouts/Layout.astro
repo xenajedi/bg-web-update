@@ -89,7 +89,7 @@ const navLinks = [
       </a>
 
       <!-- Desktop Menu Items -->
-      <div class="hidden lg:flex items-center gap-8 font-bebas tracking-widest text-xl">
+      <div class="hidden xl:flex items-center gap-8 font-bebas tracking-widest text-xl">
         {navLinks.map((link) => (
           <a 
             href={link.href} 
@@ -106,7 +106,7 @@ const navLinks = [
       </div>
 
       <!-- Desktop Button -->
-      <div class="hidden lg:block">
+      <div class="hidden xl:block">
         <a 
           href="https://www.patreon.com/BonnieBellG" 
           target="_blank" 
@@ -121,7 +121,7 @@ const navLinks = [
       <!-- Mobile Hamburger Button -->
       <button 
         id="menu-toggle" 
-        class="lg:hidden flex flex-col justify-between w-6 h-5 cursor-pointer z-50 focus:outline-none"
+        class="xl:hidden flex flex-col justify-between w-6 h-5 cursor-pointer z-50 focus:outline-none"
         aria-label="Toggle Navigation Menu"
       >
         <span class="w-full h-0.5 rounded transition-transform duration-300 origin-left" style={`background-color: ${theme.navBarFontColor};`}></span>
@@ -132,7 +132,7 @@ const navLinks = [
       <!-- Mobile Full-screen Drawer Overlay -->
       <div 
         id="mobile-menu" 
-        class="fixed inset-0 top-[calc(40px+72px)] hidden z-30 flex-col items-center justify-center gap-8 font-bebas tracking-widest text-3xl transition-transform duration-300 translate-x-full"
+        class="fixed inset-0 top-[calc(32px+68px)] sm:top-[calc(36px+76px)] md:top-[calc(40px+80px)] hidden xl:flex z-30 flex-col items-center justify-center gap-8 font-bebas tracking-widest text-3xl transition-transform duration-300 translate-x-full"
         style={`background-color: ${theme.navBarBg}; color: ${theme.navBarFontColor};`}
       >
         {navLinks.map((link) => (
