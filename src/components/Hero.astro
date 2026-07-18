@@ -1,0 +1,74 @@
+---
+---
+<section class="relative w-full h-[85vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-black">
+  <!-- Background Image with center focus -->
+  <div 
+    class="absolute inset-0 bg-cover bg-center md:bg-[50%_35%] bg-no-repeat transition-all duration-700 select-none scale-105 hero-bg"
+    style="background-image: url('/hero-full.png');"
+  >
+  </div>
+  
+  <!-- Overlay for readability -->
+  <div class="absolute inset-0 bg-gradient-to-t from-[#400e0f]/90 via-black/40 to-black/30 mix-blend-multiply"></div>
+  <div class="absolute inset-0 bg-black/10"></div>
+
+  <!-- Content -->
+  <div class="relative max-w-6xl mx-auto px-4 text-center z-10 text-[#fef8db] flex flex-col items-center">
+    <h1 class="hero-title text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-bebas tracking-widest leading-none drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] font-bold select-none opacity-0">
+      BONNIE GORDON
+    </h1>
+    <p class="hero-sub text-xl sm:text-2xl md:text-3xl font-raleway tracking-wide font-light max-w-2xl mt-4 sm:mt-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-[#fef8db]/90 uppercase opacity-0">
+      Voice Actor <span class="mx-2 text-[#a87734]">•</span> Singer <span class="mx-2 text-[#a87734]">•</span> Entertainer
+    </p>
+    
+    <div class="hero-btn mt-8 opacity-0">
+      <a 
+        href="#about" 
+        class="inline-flex items-center gap-2 font-bebas tracking-widest text-lg bg-[#d4a252] hover:bg-[#a87734] text-[#583714] hover:text-[#fef8db] py-3.5 px-8 rounded-md font-bold transition-all duration-300 hover:scale-105 shadow-lg"
+      >
+        Discover Bonnie
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 animate-bounce mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+
+  window.addEventListener('DOMContentLoaded', () => {
+    // Zoom out background on load
+    gsap.to('.hero-bg', {
+      scale: 1,
+      duration: 2.5,
+      ease: 'power2.out'
+    });
+
+    // Fade in texts
+    gsap.to('.hero-title', {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: 'power3.out',
+      delay: 0.3
+    });
+
+    gsap.to('.hero-sub', {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: 'power3.out',
+      delay: 0.6
+    });
+
+    gsap.to('.hero-btn', {
+      y: 0,
+      opacity: 1,
+      duration: 1.0,
+      ease: 'power3.out',
+      delay: 0.9
+    });
+  });
+</script>

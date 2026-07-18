@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Actress from '../components/Actress.astro';
+
+const theme = {
+  topHeaderBg: '#c0936f',
+  logoColor: '#c0936f',
+  navBarBg: '#4d1614',
+  navBarFontColor: '#c0936f',
+  navBarBtnBg: '#c0936f',
+  navBarBtnFontColor: '#4d1614',
+};
+---
+
+<Layout 
+  title="Stage & Screen" 
+  theme={theme} 
+  activePage="stagescreen"
+  description="Explore Bonnie Gordon's acting roles on stage (London's West End, Hollywood Fringe) and screen (ABC Family's The Quest, Star Trek: Prodigy, Street Fighter V)."
+>
+  <Actress />
+</Layout>

@@ -1,0 +1,97 @@
+---
+---
+<section 
+  id="about" 
+  class="relative py-20 px-4 md:px-8 overflow-hidden min-h-screen flex items-center justify-center"
+  style="background: linear-gradient(135deg, #a9742e 0%, #400e0f 100%);"
+>
+  <!-- Content Container -->
+  <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+    
+    <!-- Left Side: Image -->
+    <div class="md:col-span-5 flex justify-center about-img-container opacity-0">
+      <div class="relative group max-w-sm md:max-w-full">
+        <!-- Accent border offset -->
+        <div class="absolute -inset-3 border-2 border-[#583714] rounded-lg translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></div>
+        <!-- Main Image -->
+        <img 
+          src="/bg-about.webp" 
+          alt="Bonnie Gordon Portrait" 
+          class="relative z-10 w-full h-auto object-cover rounded-lg shadow-2xl border-4 border-[#fef8db] group-hover:scale-[1.01] transition-transform duration-300"
+        />
+      </div>
+    </div>
+    
+    <!-- Right Side: Content -->
+    <div class="md:col-span-7 flex flex-col justify-center about-text-container opacity-0">
+      <h2 class="font-bebas tracking-widest text-5xl md:text-7xl text-[#583714] mb-8 drop-shadow-sm">
+        ABOUT BONNIE
+      </h2>
+      
+      <div class="space-y-6 text-[#fef8db] font-raleway text-base md:text-lg leading-relaxed font-light">
+        <p>
+          A dynamic entertainer and voiceover artist with extensive credits across screen, digital platforms, and stage. On-screen, Bonnie is known for her role in the ABC Family series <span class="font-semibold text-white">The Quest</span>, along with work for Nickelodeon and Cartoon Network. In voiceover, she brings to life multiple roles on the Paramount+ series, <span class="font-semibold text-white">Star Trek: Prodigy</span> and fan-favorite characters in video game franchises like <span class="font-semibold text-white">Street Fighter V</span> and <span class="font-semibold text-white">Mega Man 11</span>.
+        </p>
+        <p>
+          On stage, Bonnie has appeared in live theater, including the original run of Richard Sherman’s <span class="font-semibold text-white">Pizzazz</span>, as well as shows Off-Broadway and in London's West End. She is also an accomplished singer and live entertainer. As the co-founder of the comedy band <span class="font-semibold text-white">Library Bards</span>, she has built a dedicated international following, performing high-energy, fan-centric shows at conventions worldwide. She released her first solo album, <span class="font-semibold text-white">Con Artist</span>, in 2023.
+        </p>
+        <p class="border-l-4 border-[#583714] pl-4 italic text-[#fef8db]/90">
+          Bonnie is also an accomplished and active songwriter and solo vocalist. She has performed in venues of all kinds: comic conventions, cruise ships, large concert halls, and jazzy night clubs.
+        </p>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="flex flex-wrap gap-4 mt-8">
+        <a 
+          href="/stagescreen" 
+          class="font-bebas tracking-widest text-lg py-2.5 px-6 rounded-md font-bold transition-all duration-300 hover:scale-105 shadow hover:shadow-lg inline-block border-2 border-[#583714] text-[#583714] hover:bg-[#583714] hover:text-[#fef8db]"
+        >
+          Stage & Screen Credits
+        </a>
+        <a 
+          href="/music" 
+          class="font-bebas tracking-widest text-lg py-2.5 px-6 rounded-md font-bold transition-all duration-300 hover:scale-105 shadow hover:shadow-lg inline-block bg-[#d4a252] text-[#583714] hover:bg-[#583714] hover:text-[#fef8db]"
+        >
+          Listen to Music
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener('DOMContentLoaded', () => {
+    // Left side image slide in from left
+    gsap.to('.about-img-container', {
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      },
+      x: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+
+    // Right side text fade in from right
+    gsap.to('.about-text-container', {
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      },
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: 'power3.out',
+      delay: 0.2
+    });
+  });
+</script>

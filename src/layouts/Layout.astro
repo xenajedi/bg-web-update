@@ -1,0 +1,238 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  theme: {
+    topHeaderBg: string;
+    logoColor: string;
+    navBarBg: string;
+    navBarFontColor: string;
+    navBarBtnBg: string;
+    navBarBtnFontColor: string;
+  };
+  activePage: 'home' | 'stagescreen' | 'music' | 'appearances';
+}
+
+const { 
+  title, 
+  description = "Official website of Bonnie Gordon - Dynamic entertainer, voiceover artist, singer, and songwriter.", 
+  theme, 
+  activePage 
+} = Astro.props;
+
+const socialLinks = [
+  { href: 'https://www.instagram.com/BonnieBellG', icon: '/instagram-icon.svg', name: 'Instagram' },
+  { href: 'https://www.imdb.com/name/nm3239252/', icon: '/imdb-icon.svg', name: 'IMDB' },
+  { href: 'https://www.facebook.com/BonnieBellG', icon: '/facebook-icon.webp', name: 'Facebook' },
+  { href: 'https://www.twitter.com/BonnieBellG', icon: '/twitter-icon.webp', name: 'Twitter' },
+  { href: 'https://www.tiktok.com/@bonniebellg', icon: '/tiktok-icon.webp', name: 'TikTok' },
+];
+
+const navLinks = [
+  { label: 'Home', href: '/', id: 'home' },
+  { label: 'Stage & Screen', href: '/stagescreen', id: 'stagescreen' },
+  { label: 'Music', href: '/music', id: 'music' },
+  { label: 'Appearances', href: '/appearances', id: 'appearances' },
+  { label: 'Merchandise', href: 'https://www.punkarmy.net/store/bonniegordon/', id: 'merch', external: true },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO -->
+    <title>{title} | Bonnie Gordon</title>
+    <meta name="description" content={description} />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    
+    <!-- Top Social Bar -->
+    <header 
+      class="w-full py-2 px-4 md:px-8 flex justify-between items-center z-50 text-xs tracking-widest font-bebas transition-all duration-300"
+      style={`background-color: ${theme.topHeaderBg}; color: ${theme.logoColor};`}
+    >
+      <span class="font-medium hidden sm:inline">BONNIE GORDON • DYNAMIC ENTERTAINER</span>
+      <div class="flex items-center gap-4 sm:ml-auto">
+        {socialLinks.map((link) => (
+          <a 
+            href={link.href} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="transition-transform duration-200 hover:scale-115 flex items-center justify-center opacity-90 hover:opacity-100"
+            title={link.name}
+          >
+            <img src={link.icon} alt={link.name} class="h-4 sm:h-5 w-auto object-contain brightness-100 invert-[0.1]" />
+          </a>
+        ))}
+      </div>
+    </header>
+
+    <!-- Main Navigation Bar -->
+    <nav 
+      class="w-full sticky top-0 z-40 py-4 px-4 md:px-8 flex justify-between items-center shadow-lg transition-colors duration-300"
+      style={`background-color: ${theme.navBarBg}; color: ${theme.navBarFontColor};`}
+    >
+      <!-- Logo -->
+      <a href="/" class="flex items-center hover:opacity-90 transition-opacity duration-200" aria-label="Bonnie Gordon Home">
+        <Logo class="h-10 md:h-14 w-auto" style={`color: ${theme.logoColor};`} />
+      </a>
+
+      <!-- Desktop Menu Items -->
+      <div class="hidden lg:flex items-center gap-8 font-bebas tracking-widest text-xl">
+        {navLinks.map((link) => (
+          <a 
+            href={link.href} 
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+            class={`relative py-1 hover:opacity-100 transition-opacity duration-200 active-nav-link ${
+              activePage === link.id ? "opacity-100 border-b-2 font-bold" : "opacity-75"
+            }`}
+            style={activePage === link.id ? `border-color: ${theme.navBarFontColor};` : ''}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Desktop Button -->
+      <div class="hidden lg:block">
+        <a 
+          href="https://www.patreon.com/BonnieBellG" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="font-bebas tracking-widest text-lg py-2.5 px-6 rounded-md font-bold transition-all duration-300 hover:scale-105 shadow hover:shadow-lg inline-block"
+          style={`background-color: ${theme.navBarBtnBg}; color: ${theme.navBarBtnFontColor};`}
+        >
+          BECOME A PATRON
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        id="menu-toggle" 
+        class="lg:hidden flex flex-col justify-between w-6 h-5 cursor-pointer z-50 focus:outline-none"
+        aria-label="Toggle Navigation Menu"
+      >
+        <span class="w-full h-0.5 rounded transition-transform duration-300 origin-left" style={`background-color: ${theme.navBarFontColor};`}></span>
+        <span class="w-full h-0.5 rounded transition-opacity duration-300" style={`background-color: ${theme.navBarFontColor};`}></span>
+        <span class="w-full h-0.5 rounded transition-transform duration-300 origin-left" style={`background-color: ${theme.navBarFontColor};`}></span>
+      </button>
+
+      <!-- Mobile Full-screen Drawer Overlay -->
+      <div 
+        id="mobile-menu" 
+        class="fixed inset-0 top-[calc(40px+72px)] hidden z-30 flex-col items-center justify-center gap-8 font-bebas tracking-widest text-3xl transition-transform duration-300 translate-x-full"
+        style={`background-color: ${theme.navBarBg}; color: ${theme.navBarFontColor};`}
+      >
+        {navLinks.map((link) => (
+          <a 
+            href={link.href} 
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+            class={`hover:scale-105 transition-transform duration-200 mobile-nav-link ${
+              activePage === link.id ? "font-bold opacity-100" : "opacity-80"
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a 
+          href="https://www.patreon.com/BonnieBellG" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="font-bebas tracking-widest text-2xl py-3 px-8 rounded-md font-bold transition-all duration-300 hover:scale-105 mt-4"
+          style={`background-color: ${theme.navBarBtnBg}; color: ${theme.navBarBtnFontColor};`}
+        >
+          BECOME A PATRON
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow flex flex-col">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer 
+      class="w-full py-8 px-4 text-center border-t border-white/5 text-sm tracking-wide transition-colors duration-300"
+      style={`background-color: ${theme.navBarBg}; color: ${theme.navBarFontColor}88;`}
+    >
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <p>&copy; {new Date().getFullYear()} Bonnie Gordon. All Rights Reserved.</p>
+        <div class="flex gap-6 text-xs uppercase font-bebas tracking-widest">
+          <a href="/" class="hover:underline">Home</a>
+          <a href="/stagescreen" class="hover:underline">Stage & Screen</a>
+          <a href="/music" class="hover:underline">Music</a>
+          <a href="/appearances" class="hover:underline">Appearances</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactivity Script -->
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.contains('hidden');
+          
+          if (isOpen) {
+            // Open menu
+            mobileMenu.classList.remove('hidden');
+            // Allow layout render, then animate
+            setTimeout(() => {
+              mobileMenu.classList.remove('translate-x-full');
+            }, 10);
+            
+            // Animate hamburger to X
+            const lines = menuToggle.querySelectorAll('span');
+            lines[0].style.transform = 'rotate(45deg) translate(2px, -1px)';
+            lines[1].style.opacity = '0';
+            lines[2].style.transform = 'rotate(-45deg) translate(2px, 1px)';
+          } else {
+            // Close menu
+            mobileMenu.classList.add('translate-x-full');
+            
+            // Revert hamburger lines
+            const lines = menuToggle.querySelectorAll('span');
+            lines[0].style.transform = 'none';
+            lines[1].style.opacity = '1';
+            lines[2].style.transform = 'none';
+            
+            setTimeout(() => {
+              mobileMenu.classList.add('hidden');
+            }, 300);
+          }
+        });
+
+        // Close menu on navigation click
+        const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+            const lines = menuToggle.querySelectorAll('span');
+            lines[0].style.transform = 'none';
+            lines[1].style.opacity = '1';
+            lines[2].style.transform = 'none';
+            setTimeout(() => {
+              mobileMenu.classList.add('hidden');
+            }, 300);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

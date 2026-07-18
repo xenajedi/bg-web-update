@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ConArtist from '../components/ConArtist.astro';
+import LibraryBard from '../components/LibraryBard.astro';
+
+const theme = {
+  topHeaderBg: '#095e8d',
+  logoColor: '#0995ce',
+  navBarBg: '#0b1c24',
+  navBarFontColor: '#095e8d',
+  navBarBtnBg: '#095e8d',
+  navBarBtnFontColor: '#0b1c24',
+};
+---
+
+<Layout 
+  title="Music" 
+  theme={theme} 
+  activePage="music"
+  description="Discover Bonnie Gordon's music. Stream her solo jazz-nerdy album Con Artist, and explore parodies by her comedy band, Library Bards."
+>
+  <ConArtist />
+  <LibraryBard />
+</Layout>

@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+
+const theme = {
+  topHeaderBg: '#a87734',
+  logoColor: '#fef8db',
+  navBarBg: '#583714',
+  navBarFontColor: '#d4a252',
+  navBarBtnBg: '#d4a252',
+  navBarBtnFontColor: '#583714',
+};
+---
+
+<Layout 
+  title="Home" 
+  theme={theme} 
+  activePage="home"
+  description="Welcome to the official website of Bonnie Gordon, voice actor (Star Trek: Prodigy, Street Fighter V), singer-songwriter, and live entertainer."
+>
+  <Hero />
+  <About />
+</Layout>

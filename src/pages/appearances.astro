@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Schedule from '../components/Schedule.astro';
+
+const theme = {
+  topHeaderBg: '#5170ff',
+  logoColor: '#5170ff',
+  navBarBg: '#0b1c24',
+  navBarFontColor: '#5170ff',
+  navBarBtnBg: '#095e8d',
+  navBarBtnFontColor: '#0b1c24',
+};
+---
+
+<Layout 
+  title="Appearances" 
+  theme={theme} 
+  activePage="appearances"
+  description="Catch Bonnie Gordon live! View her 2026 appearance dates and locations, including San Diego Comic-Con, GenCon, and Star Trek Las Vegas."
+>
+  <Schedule />
+</Layout>
